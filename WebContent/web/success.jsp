@@ -4,10 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<frameset rows="20%",cols="*">
+	<frame src="web/Title.jsp"/>
+</frameset>
+<title>教师系统</title>
 </head>
 <body>
-	修改成功，三秒后跳到查询页面...
-	<meta http-equiv="refresh" content="3;url=select.jsp">
+	
 </body>
 </html>
