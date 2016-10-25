@@ -1,10 +1,10 @@
+<%@page import="org.w3c.dom.Document"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <% 
-	String class1 = request.getParameter("class806");
-	String class2 = request.getParameter("class811");
-	
-	
-
+	String classes1 = request.getParameter("classes");
+	String queding = request.getParameter("sure");
+	System.out.println("id名为："+classes1);
+	System.out.println("确定名为："+queding);
 
 %>

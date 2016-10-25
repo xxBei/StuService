@@ -20,11 +20,11 @@
 		db = new HelperDB(sql);
 		ret = db.pst.executeQuery();
 	%>
-	<form action="",method="post">
+	<form action="cho_class2.jsp",method="post">
 		<center>
-			<select style="width: 250px;margin-top: 50px;">
+			<select style="width: 250px;margin-top: 50px;" name="classes">
 			<%while(ret.next()){ %>
-				<option name="class<%i++; %>"><%out.print(ret.getString(1)); %></option>
+				<option><%out.print(ret.getString(1)); %></option>
 			<%} %>
 			
 			</select>
