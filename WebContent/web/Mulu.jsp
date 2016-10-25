@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div><a href="Cho_class.jsp" target="right"><center><font size="5px">选择教室</font></center></a></div>
-	<div><a href="#" target="right"><center><font size="5px">查看记录</font></center></a></div>
-	<div><a href="#" target="right"><center><font size="5px">查看学生信息</font></center></a></div>
+	<center><div><a href="Cho_class.jsp" target="right"><font size="5px">选择教室</font></a></div></center>
+	<center><div><a href="record.jsp" target="right"><font size="5px">查看记录</font></a></div></center>
+	<center><div><a href="#" target="right"><font size="5px">查看学生信息</font></a></div></center>
 </body>
 </html>
