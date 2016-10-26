@@ -15,11 +15,10 @@
 
 	request.setCharacterEncoding("utf-8");
 	
-	String sql = "insert into clas_tijiao (classname,time) values('"+classes+"','"+time+"')";
+	String sql = "insert into clas_tijiao (classname) values('"+classes+"')";
 	HelperDB db = new HelperDB(sql);
 	boolean ret = db.pst.execute();
 	db.close();
 	
 	
-	out.print("{classes:"+classes+"}");
 %>

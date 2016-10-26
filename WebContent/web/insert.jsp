@@ -10,22 +10,23 @@
 </head>
 <body>
 
-	<% 
+	<%
 		request.setCharacterEncoding("utf-8");
-		//Integer number = Integer.parseInt(request.getParameter("number"));
-		String number = request.getParameter("number");
-		String name = request.getParameter("name");
-		String password = request.getParameter("password");
-		String classname = request.getParameter("classname");
-		
-		if(name!=null){
-		String sql = "insert into student_db (number,name,password,classname) values('"+number+"','"+name+"','"+password+"','"+classname+"')";
-		HelperDB db =new HelperDB(sql);
-		boolean rst = db.pst.execute();
-		db.close();
-	}else{
-		out.print("不能为空！");
-	}
+			//Integer number = Integer.parseInt(request.getParameter("number"));
+			String number = request.getParameter("number");
+			String name = request.getParameter("name");
+			String password = request.getParameter("password");
+			String classname = request.getParameter("classname");
+			
+			if(name!=null){
+			String sql = "insert into student_db (number,name,password,classname) values('" + number + "','" + name
+					+ "','" + password + "','" + classname + "')";
+			HelperDB db = new HelperDB(sql);
+			boolean rst = db.pst.execute();
+			db.close();
+		} else {
+			out.print("不能为空！");
+		}
 	%>
 
 	<div align="center">
