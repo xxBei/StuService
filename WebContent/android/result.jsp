@@ -13,7 +13,12 @@
 	String name = request.getParameter("name");
 	String image = request.getParameter("image");
 	String classname = request.getParameter("classname");
+	//获取GPS的经纬
+	String latitude  = request.getParameter("latitude");
+	String longitude = request.getParameter("longitude");
 	
+	System.out.println("纬度："+latitude);
+	System.out.println("经度："+longitude);
 	String url = null;
 	
 	String dateTime = null;	

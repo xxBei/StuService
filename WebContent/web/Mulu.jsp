@@ -9,6 +9,6 @@
 <body>
 	<center><div><a href="Cho_class.jsp" target="right"><font size="5px">选择教室</font></a></div></center>
 	<center><div><a href="record.jsp" target="right"><font size="5px">查看记录</font></a></div></center>
-	<center><div><a href="#" target="right"><font size="5px">查看学生信息</font></a></div></center>
+	<center><div><a href="select.jsp" target="right"><font size="5px">查看学生信息</font></a></div></center>
 </body>
 </html>

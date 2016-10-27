@@ -38,7 +38,10 @@ table {
 		
 	%>
 
-	<table align="center">
+	<div>
+		<center><font size=15px>学生信息</font></center>
+	</div>
+	<table align="center" style="margin-top: 20px">
 	
 		<tr>
 			<th>
@@ -84,7 +87,6 @@ table {
 		</tr>		
 	</table>
 	<br><br>
-	<div align="center">数据查询成功</div>
 	<%
 		rst.close();
 		db.close();

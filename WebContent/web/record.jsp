@@ -69,7 +69,7 @@ table {
 				<%out.print(ret.getString(4)); %>
 			</td>
 			<td>
-				<%out.print(ret.getString(5)); %>
+				<img src="<%out.print(request.getContextPath()+ret.getString(5));%>">
 			</td>
 			<td>
 				<%out.print(ret.getString(6)); %>
