@@ -25,14 +25,23 @@ table {
 <body>
 	<% 
 		String sql = null;
+		String sql1 = null;
 		HelperDB db = null;
 		ResultSet ret = null;
 		
 		sql = "select * from statisttics_db";
+		//根据班级名查询所有信息
+		//sql1 = "select * from statisttics_db where classname='"++"'";
 		db = new HelperDB(sql);
 		ret = db.pst.executeQuery();
 	%>
 	
+	<select style="width: 250px;margin-top: 50px;">
+		<option>
+			
+		</option>
+	</select>
+		
 	<table align="center">
 		<tr>
 			<th>
