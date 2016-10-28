@@ -19,6 +19,7 @@
 	
 	System.out.println("纬度："+latitude);
 	System.out.println("经度："+longitude);
+	
 	String url = null;
 	
 	String dateTime = null;	
@@ -67,17 +68,31 @@
 	output.flush();
 	output.close();
 	
-	//向数据库插入图片位置
-	request.setCharacterEncoding("utf-8");
-	String sql = null;
-	
-	if(user==null){
-		System.out.print("用户名为空");
-	}else{
-		sql = "insert into statisttics_db (name,number,classname,images,time) values('"+name+"','"+user+"','"+classname+"','"+url+"','"+time+"')";
-		HelperDB db = new HelperDB(sql);
-		boolean ret = db.pst.execute();
-		db.close();
+	String sql1 = null;
+	String user1 = null;
+	boolean userPd = false; 
+	sql1 = "select number from statisttics_db";
+	HelperDB db1 = new HelperDB(sql1);
+	ResultSet ret1 = db1.pst.executeQuery();
+	while(ret1.next()){
+		user1 = ret1.getString(1);
 	}
+	if(user1==null){
+		userPd = true;
+		//向数据库插入图片位置
+		request.setCharacterEncoding("utf-8");
+		String sql = null;
+		if(user==null){
+			System.out.print("用户名为空");
+		}else{
+			sql = "insert into statisttics_db (name,number,classname,images,time) values('"+name+"','"+user+"','"+classname+"','"+url+"','"+time+"')";
+			HelperDB db = new HelperDB(sql);
+			boolean ret = db.pst.execute();
+			db.close();
+		}
+	}else{
+		userPd = false;
+	}
+	out.print("{userPd:"+userPd+"}");
 	
 %>
