@@ -19,6 +19,9 @@
 	<div style="width: 100%">
 	<form action="cla_select1.jsp">
 		<center>
+		怎么时间：
+		
+		
 		选择班级：  
 		<select style="width: 300px;margin-top: 30px" name="class1">
 			<%while(ret.next()){ %>

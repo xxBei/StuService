@@ -13,6 +13,8 @@
 	String name = request.getParameter("name");
 	String image = request.getParameter("image");
 	String classname = request.getParameter("classname");
+	String roomName = request.getParameter("roomName");
+	
 	//获取GPS的经纬
 	String latitude  = request.getParameter("latitude");
 	String longitude = request.getParameter("longitude");
@@ -32,6 +34,9 @@
 	System.out.println("image:"+image);
 	System.out.print("长度："+image.length());
 
+	//获取教室名
+	System.out.print("教室名："+roomName);
+	
 	//获取时间在照片名称中
 	dateTime = new SimpleDateFormat("yyyyMMdd_hhmmss").format(Calendar.getInstance().getTime());
 	System.out.println("时间："+dateTime);
@@ -40,6 +45,7 @@
 	time = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(Calendar.getInstance().getTime());
 	System.out.println("时间："+time);
 	
+	//创建目录
 	File filePath = new File(request.getRealPath("image"));
 	//判断文件夹是否存在
 	if(!filePath.exists()){
@@ -69,30 +75,31 @@
 	output.close();
 	
 	String sql1 = null;
-	String user1 = null;
-	boolean userPd = false; 
-	sql1 = "select number from statisttics_db";
+	Long user1 = null;
+	boolean userCf = false; 
+	sql1 = "select count(*) from statisttics_db where name='"+name+"'";
 	HelperDB db1 = new HelperDB(sql1);
 	ResultSet ret1 = db1.pst.executeQuery();
 	while(ret1.next()){
-		user1 = ret1.getString(1);
+		user1 = ret1.getLong(1);
 	}
-	if(user1==null){
-		userPd = true;
+	
+	if(user1==0){
+		userCf = true;
 		//向数据库插入图片位置
 		request.setCharacterEncoding("utf-8");
 		String sql = null;
 		if(user==null){
 			System.out.print("用户名为空");
 		}else{
-			sql = "insert into statisttics_db (name,number,classname,images,time) values('"+name+"','"+user+"','"+classname+"','"+url+"','"+time+"')";
+			sql = "insert into statisttics_db (name,number,classname,images,time,roomName) values('"+name+"','"+user+"','"+classname+"','"+url+"','"+time+"','"+roomName+"')";
 			HelperDB db = new HelperDB(sql);
 			boolean ret = db.pst.execute();
 			db.close();
 		}
 	}else{
-		userPd = false;
+		userCf = false;
 	}
-	out.print("{userPd:"+userPd+"}");
+	out.print("{userCf:"+userCf+"}");
 	
 %>
