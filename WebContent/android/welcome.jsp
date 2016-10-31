@@ -28,6 +28,25 @@
 	}
 	ret.close();
 	db.close();
-	out.print("{number:"+unumber+",name:"+uname+",classname:"+uclassname+"}");
 	
+	
+	
+	String sql1 = null;
+	Long user1 = null;
+	boolean userCf = false; 
+	sql1 = "select count(*) from statisttics_db where number='"+number+"'";
+	HelperDB db1 = new HelperDB(sql1);
+	ResultSet ret1 = db1.pst.executeQuery();
+	while(ret1.next()){
+		user1 = ret1.getLong(1);
+	}
+	db1.close();
+	ret1.close();
+	if(user1==0){
+		userCf = true;
+	}else{
+		userCf = false;
+	}
+	out.print("{number:"+unumber+",name:"+uname+",classname:"+uclassname+",userCf:"+userCf+"}");
+	System.out.print(userCf);
 %>

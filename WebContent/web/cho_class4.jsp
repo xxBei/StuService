@@ -9,27 +9,16 @@
 <title>通过时间查询</title>
 </head>
 <body>
-	<%
-		String sql = null;
-		ResultSet ret = null;
-		sql = "select classname from statisttics_db";
-		HelperDB db = new HelperDB(sql);
-		ret = db.pst.executeQuery();
-	%> 
 	<div style="width: 100%">
 	<form action="cla_select1.jsp">
 		<center>
-		怎么时间：
-		
-		
+		<br><br>
+		选择时间：
+		<input type="text" name="time1"/>
+		<br><br>
 		选择班级：  
-		<select style="width: 300px;margin-top: 30px" name="class1">
-			<%while(ret.next()){ %>
-			<option>
-				<%out.print(ret.getString(1)); %>
-			</option> 
-			<%} %>
-		</select>
+		<input type="text" name="class1"/>
+		<br><br>
 		<input type="submit" value="确定"/>
 		</center>
 			

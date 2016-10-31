@@ -15,6 +15,7 @@
 	String classname = request.getParameter("classname");
 	String roomName = request.getParameter("roomName");
 	
+	
 	//获取GPS的经纬
 	String latitude  = request.getParameter("latitude");
 	String longitude = request.getParameter("longitude");
@@ -38,11 +39,11 @@
 	System.out.print("教室名："+roomName);
 	
 	//获取时间在照片名称中
-	dateTime = new SimpleDateFormat("yyyyMMdd_hhmmss").format(Calendar.getInstance().getTime());
+	dateTime = new SimpleDateFormat("yyyyMMdd_HHMMss").format(Calendar.getInstance().getTime());
 	System.out.println("时间："+dateTime);
 	url = "/image/img/"+name+dateTime+".jpg";
 	//获取时间
-	time = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(Calendar.getInstance().getTime());
+	time = new SimpleDateFormat("yyyy-MM-dd HH:MM:ss").format(Calendar.getInstance().getTime());
 	System.out.println("时间："+time);
 	
 	//创建目录
@@ -77,12 +78,14 @@
 	String sql1 = null;
 	Long user1 = null;
 	boolean userCf = false; 
-	sql1 = "select count(*) from statisttics_db where name='"+name+"'";
+	sql1 = "select count(*) from statisttics_db where number='"+user+"'";
 	HelperDB db1 = new HelperDB(sql1);
 	ResultSet ret1 = db1.pst.executeQuery();
 	while(ret1.next()){
 		user1 = ret1.getLong(1);
 	}
+	db1.close();
+	ret1.close();
 	
 	if(user1==0){
 		userCf = true;
