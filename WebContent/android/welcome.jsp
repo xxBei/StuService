@@ -34,7 +34,6 @@
 	db.close();
 	
 	//通过时间判断是否在规定时间内上课
-	String sections = null;
 	boolean section = false;
 	
 	String time1 = new  SimpleDateFormat("2016-11-01 HH:mm:ss").format(Calendar.getInstance().getTime());
@@ -42,6 +41,7 @@
 	
 	DateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	Date dates = df1.parse(time1);
+	long l1=0,day1=0,hour1=0,min1=0,s1=0;
 	Date date1 = df1.parse("2016-11-01 08:20:00");
 	Date date2 = df1.parse("2016-11-01 09:15:00");
 	Date date3 = df1.parse("2016-11-01 10:20:00");
@@ -50,37 +50,30 @@
 	Date date6 = df1.parse("2016-11-01 14:55:00");
 	Date date7 = df1.parse("2016-11-01 15:50:00");
 	Date date8 = df1.parse("2016-11-01 16:45:00");
-	 long l1 = dates.getTime()-date1.getTime();
-	    long day1=l1/(24*60*60*1000);     
-	    long hour1=(l1/(60*60*1000)-day1*24);     
-	    long min1=((l1/(60*1000))-day1*24*60-hour1*60);     
-	    long s1=(l1/1000-day1*24*60*60-hour1*60*60-min1*60);     
+	long[] d = new long[]{date1.getTime(),date2.getTime(),date3.getTime(),
+			date4.getTime(),date5.getTime(),date6.getTime(),date7.getTime(),
+			date8.getTime()};
+	for(int i=0;i<d.length;i++){
+		 l1 = dates.getTime()-d[i];
+	     day1=l1/(24*60*60*1000);     
+	     hour1=(l1/(60*60*1000)-day1*24);     
+	     min1=((l1/(60*1000))-day1*24*60-hour1*60);     
+	     s1=(l1/1000-day1*24*60*60-hour1*60*60-min1*60);
+	     if(min1>-27&&min1<=27&&hour1==0){
+	    	 System.out.println("此时为第"+(i+1)+"节课");
+	    	 break;
+	     }
+	}
+	 
 	    System.out.println(""+day1+"天"+hour1+"时，"+min1+"分，"+s1+"秒");
 	
-	if(min1>-30 && min1<6){
-		sections = "1";
-		System.out.println("此时能签到");
+	if(min1>-30 && min1<6&&hour1==0){
+		section = true;
+		System.out.println("此时能签到"+section);
 	}else{
-		System.out.println("此时不能签到");
+		section = false;
+		System.out.println("此时不能签到"+section);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	//String sql3 = null;
-	//String sections1 = null;
-	//sql3 = "select sections from timetable_db";
-	//HelperDB db3 = new HelperDB(sql3);
-	//ResultSet ret3 = db3.pst.executeQuery();
-	//while(ret3.next()){
-	//	sections1 = ret3.getString(1);
-	//}
-	//db3.close();
-	//ret3.close();
 	
 	
 	String sql2 = null;
@@ -103,7 +96,7 @@
     Date date = time2;
     long l = date.getTime()-now.getTime();
     long day=l/(24*60*60*1000);     
-    long hour=(l/(60*60*1000)-day*24);     
+    long hour=(l/(60*60*1000)-day*24);
     long min=((l/(60*1000))-day*24*60-hour*60);     
     long s=(l/1000-day*24*60*60-hour*60*60-min*60);     
     System.out.println(""+day+"天"+hour+"时"+min+"分"+s+"秒");
@@ -128,6 +121,6 @@
 	}else{
 		userCf = false;
 	}
-	out.print("{number:"+unumber+",name:"+uname+",classname:"+uclassname+",userCf:"+userCf+"}");
+	out.print("{number:"+unumber+",name:"+uname+",classname:"+uclassname+",userCf:"+userCf+"section"+section+"}");
 	System.out.print(userCf);
 %>
