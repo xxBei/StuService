@@ -35,6 +35,7 @@
 	
 	//通过时间判断是否在规定时间内上课
 	boolean section = false;
+	int ke = 0;
 	
 	String time1 = new  SimpleDateFormat("2016-11-01 HH:mm:ss").format(Calendar.getInstance().getTime());
 	System.out.println("当前时间:"+time1);
@@ -60,7 +61,8 @@
 	     min1=((l1/(60*1000))-day1*24*60-hour1*60);     
 	     s1=(l1/1000-day1*24*60*60-hour1*60*60-min1*60);
 	     if(min1>-27&&min1<=27&&hour1==0){
-	    	 System.out.println("此时为第"+(i+1)+"节课");
+	    	 ke = i+1;
+	    	 System.out.println("此时为第"+ke+"节课");
 	    	 break;
 	     }
 	}
@@ -121,6 +123,6 @@
 	}else{
 		userCf = false;
 	}
-	out.print("{number:"+unumber+",name:"+uname+",classname:"+uclassname+",userCf:"+userCf+"section"+section+"}");
+	out.print("{number:"+unumber+",name:"+uname+",classname:"+uclassname+",userCf:"+userCf+",section:"+section+",ke:"+ke+"}");
 	System.out.print(userCf);
 %>
