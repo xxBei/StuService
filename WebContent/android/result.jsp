@@ -14,8 +14,10 @@
 	String image = request.getParameter("image");
 	String classname = request.getParameter("classname");
 	String roomName = request.getParameter("roomName");
+	String ke = request.getParameter("ke");
 	
-	
+	ke = "第"+ke+"节课";
+	System.out.print("此次为："+ke);
 	//获取GPS的经纬
 	String latitude  = request.getParameter("latitude");
 	String longitude = request.getParameter("longitude");
@@ -95,7 +97,7 @@
 		if(user==null){
 			System.out.print("用户名为空");
 		}else{
-			sql = "insert into statisttics_db (name,number,classname,images,time,roomName) values('"+name+"','"+user+"','"+classname+"','"+url+"','"+time+"','"+roomName+"')";
+			sql = "insert into statisttics_db (name,number,classname,images,section,time,roomName) values('"+name+"','"+user+"','"+classname+"','"+url+"','"+ke+"','"+time+"','"+roomName+"')";
 			HelperDB db = new HelperDB(sql);
 			boolean ret = db.pst.execute();
 			db.close();

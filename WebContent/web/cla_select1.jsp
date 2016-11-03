@@ -11,7 +11,7 @@
 
 table {
 	border: 2px #cccccc solid;
-	width: 560px;
+	width: 860px;
 }
 
 	td,th{
@@ -24,7 +24,8 @@ table {
 <body>
 	<%
 		String class1 = request.getParameter("class1");
-		String sql = "select * from statisttics_db where classname='"+class1+"'";
+		String time1 = request.getParameter("time1");
+		String sql = "select * from statisttics_db where classname='"+class1+"' and section='"+time1+"'";
 		HelperDB db = new HelperDB(sql);
 		ResultSet ret = db.pst.executeQuery();
 	%>
@@ -52,7 +53,9 @@ table {
 			<th>
 				<%out.print("图片"); %>
 			</th>
-		
+			<th>
+				<%out.print("节课数"); %>
+			</th>
 			<th>
 				<%out.print("时间"); %>
 			</th>
@@ -81,11 +84,16 @@ table {
 				%>
 			</td>
 			<td>
-				<img src="<%out.print(request.getContextPath()+ret.getString(5));%>">
+				<img src="<%out.print(request.getContextPath()+ret.getString(5));%>" width="150" height="150">
 			</td>
 			<td>
 				<%
 					out.print(ret.getString(6));
+				%>
+			</td>
+			<td>
+				<%
+					out.print(ret.getString(7));
 				%>
 			</td>
 			<%} %>

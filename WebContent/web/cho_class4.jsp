@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>通过时间查询</title>
+
 </head>
 <body>
 	<div style="width: 100%">
@@ -14,14 +15,46 @@
 		<center>
 		<br><br>
 		选择时间：
-		<input type="text" name="time1"/>
+		<%
+			String sql1 = null;
+			HelperDB db1 = null;
+			ResultSet ret1 = null;
+			sql1 = "select section from timetable_db";
+			db1 = new HelperDB(sql1);
+			ret1 = db1.pst.executeQuery();
+			
+		%>
+		<select style="width: 250px;margin-top: 50px;" name="time1">
+			<%while(ret1.next()){ %>
+				<option><%out.print(ret1.getString(1)); %></option>
+			<%} %>
+		</select>
+		<%
+			db1.close();
+			ret1.close();
+		%>
 		<br><br>
 		选择班级：  
-		<input type="text" name="class1"/>
+		<%
+			String sql = null;
+			HelperDB db = null;
+			ResultSet ret = null;
+			sql = "select classname from class_db";
+			db = new HelperDB(sql);
+			ret = db.pst.executeQuery();
+		%>
+		<select style="width: 250px;margin-top: 50px;" name="class1">
+			<%while(ret.next()){ %>
+				<option><%out.print(ret.getString(1)); %></option>
+			<%} %>
+			</select>
+		<%
+		db.close();
+		ret.close();
+		%>
 		<br><br>
 		<input type="submit" value="确定"/>
 		</center>
-			
 	</form>
 	</div>
 </body>
