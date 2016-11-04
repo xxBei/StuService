@@ -25,10 +25,11 @@ table {
 	<%
 		String class1 = request.getParameter("class1");
 		String time1 = request.getParameter("time1");
-		String sql = "select * from statisttics_db where classname='"+class1+"' and section='"+time1+"'";
+		String sql = "select * from statisttics_db,timetable_db,class_db where class_db.classname='"+class1+"'=statisttics_db.classname and  timetable_db.section='"+time1+"'=statisttics_db.section";
 		HelperDB db = new HelperDB(sql);
 		ResultSet ret = db.pst.executeQuery();
 	%>
+	
 	<div>
 		<center><font size=15px>学生信息</font></center>
 	</div>
@@ -99,5 +100,8 @@ table {
 			<%} %>
 		</tr>		
 	</table>
+	<%
+		System.out.print("------------:"+sql);
+	%>
 </body>
 </html>
