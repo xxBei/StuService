@@ -1,7 +1,7 @@
 <%@page import="com.zzw.Helper.HelperDB"%>
 <%@page import="java.sql.ResultSet"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%
 	
 	String sql = null;
@@ -19,5 +19,19 @@
 	db.close();
 	ret.close();
 	
-	out.print("{classroom:"+cla+"}");
+	//查询教室的经纬度
+		String sql2 = null;
+		double latitude = 0;
+		double longitude = 0;
+		sql2 = "select Latitude,Longitude from classroom_db where roomName='"+cla+"'";
+		HelperDB db2 = new HelperDB(sql2);
+		ResultSet ret2 = db2.pst.executeQuery();
+		while(ret2.next()){
+			latitude = ret2.getDouble(1);
+			longitude = ret2.getDouble(2);
+		}
+		db2.close();
+		ret2.close();
+	
+	out.print("{classroom:"+cla+",latitude:"+latitude+",longitude:"+longitude+"}");
 %>

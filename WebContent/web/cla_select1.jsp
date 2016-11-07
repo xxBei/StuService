@@ -21,11 +21,13 @@ td, th {
 </head>
 <body>
 	<%
+		//查询节课数，班级
 		String class1 = request.getParameter("class1");
 		String time1 = request.getParameter("time1");
-
+		String date1 = request.getParameter("date1");
+		System.out.print("date1:"+date1);
 		String sql = "select * from statisttics_db s,class_db c,timetable_db t where c.classname=s.classname and s.section=t.section and c.classname='"
-				+ class1 + "' and t.section='" + time1 + "'";
+				+ class1 + "' and t.section='" + time1 + "' and s.days='"+date1+"'";
 		HelperDB db = new HelperDB(sql);
 		ResultSet ret = db.pst.executeQuery();
 	%>
@@ -120,8 +122,5 @@ td, th {
 			%>
 		</tr>
 	</table>
-	<%
-		System.out.print("------------:" + sql);
-	%>
 </body>
 </html>

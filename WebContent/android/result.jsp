@@ -18,54 +18,17 @@
 
 	ke = "第" + ke + "节课";
 	System.out.println("此次为：" + ke);
-	//获取GPS的经纬
-	String latitude = request.getParameter("Latitude");
-	String longitude = request.getParameter("Longitude");
 
-	//定义double型的经纬度
-	double lat1 = 0;
-	double long1 = 0;
-	double lat2 = 114.562222;
-	double long2 = 38.161944;
 	
-	lat1 = Double.parseDouble(latitude);
-	long1 = Double.parseDouble(longitude);
-	System.out.println(lat1+"----------"+long1);
-	double aa = 0, bb = 0, R = 0;//地球半径
-
-	R = 6378137;
-
-	lat1 = lat1 * Math.PI / 180.0;
-	lat2 = lat2 * Math.PI / 180.0;
-
-	//两点纬度差
-	aa = lat1 - lat2;
-	//两点经度差
-	bb = (long1 - long2) * Math.PI / 180.0;
-
-	double d = 0;
-	double sa2 = 0, sb2 = 0;
-
-	sa2 = Math.sin(aa / 2.0);
-	sb2 = Math.sin(bb / 2.0);
-
-	d = 2
-			* R
-			* Math.asin(Math.sqrt(sa2 * sa2 + Math.cos(lat1)
-					* Math.cos(lat2) * sb2 * sb2));
-
-
-	System.out.println("--------两者距离为："+d);
-	
-	System.out.println("纬度：" + latitude);
-	System.out.println("经度：" + longitude);
 
 	//插入关键数据
 	String url = null;
 
+	//获取日期和时间
 	String dateTime = null;
-	String time;
-
+	String time = null;
+	String days = null;
+	
 	String pictureUrl;
 	String picUrl = request.getParameter("url");
 
@@ -85,6 +48,9 @@
 	time = new SimpleDateFormat("yyyy-MM-dd HH:MM:ss").format(Calendar
 			.getInstance().getTime());
 	System.out.println("时间：" + time);
+	//获取日期
+	days = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+	System.out.println("日期："+days);
 
 	//创建目录
 	File filePath = new File(request.getRealPath("image"));
@@ -115,6 +81,7 @@
 	output.flush();
 	output.close();
 
+	
 	String sql1 = null;
 	Long user1 = null;
 	boolean userCf = false;
@@ -136,7 +103,7 @@
 		if (user == null) {
 			System.out.print("用户名为空");
 		} else {
-			sql = "insert into statisttics_db (name,number,classname,images,section,time,roomName) values('"
+			sql = "insert into statisttics_db (name,number,classname,images,section,time,days,roomName) values('"
 					+ name
 					+ "','"
 					+ user
@@ -149,6 +116,8 @@
 					+ "','"
 					+ time
 					+ "','"
+					+ days
+					+"','"
 					+ roomName + "')";
 			HelperDB db = new HelperDB(sql);
 			boolean ret = db.pst.execute();
@@ -157,5 +126,5 @@
 	} else {
 		userCf = false;
 	}
-	out.print("{userCf:" + userCf + "}");
+	out.print("{userCf:" + userCf+"}");
 %>
