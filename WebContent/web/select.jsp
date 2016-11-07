@@ -80,7 +80,7 @@ table {
 			</td>
 			<td>
 				<%
-					out.print(rst.getString(4));
+					out.print(rst.getString(5));
 				%>
 			</td>
 			<%} %>
