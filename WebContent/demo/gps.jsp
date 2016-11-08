@@ -25,7 +25,7 @@
 	  	double d = 0;
 	  	double sa2 = 0, sb2 = 0;
 	
-	  	sa2 = Math.sin(aa / 2.0);
+	  	sa2 = Math.sin(aa / 2.0); 
 	  	sb2 = Math.sin(bb / 2.0);
 	
 	  	d = 2
