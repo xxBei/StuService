@@ -25,7 +25,7 @@ td, th {
 		String class1 = request.getParameter("class1");
 		String time1 = request.getParameter("time1");
 		String date1 = request.getParameter("date1");
-		System.out.print("date1:"+date1);
+		//关联表查数据库信息
 		String sql = "select * from statisttics_db s,class_db c,timetable_db t where c.classname=s.classname and s.section=t.section and c.classname='"
 				+ class1 + "' and t.section='" + time1 + "' and s.days='"+date1+"'";
 		HelperDB db = new HelperDB(sql);
@@ -78,43 +78,54 @@ td, th {
 					out.print("时间");
 				%>
 			</th>
+			<th>
+				<%
+					out.print("状态");
+				%>
+			</th>
 
 		</tr>
 		<%
 			while (ret.next()) {
 		%>
 		<tr>
-			<td>
+			<td style="text-align: center;">
 				<%
 					out.print(ret.getString(1));
 				%>
 			</td>
-			<td>
+			<td style="text-align: center;">
 				<%
 					out.print(ret.getString(2));
 				%>
 			</td>
-			<td>
+			<td style="text-align: center;">
 				<%
 					out.print(ret.getString(3));
 				%>
 			</td>
-			<td>
+			<td style="text-align: center;">
 				<%
 					out.print(ret.getString(4));
 				%>
 			</td>
-			<td><img
+			<td style="width: 150px;height: 150px"><img
 				src="<%out.print(request.getContextPath() + ret.getString(5));%>"
-				width="150" height="150"></td>
-			<td>
+				width="150" height="150">
+			</td>
+			<td style="text-align: center;">
 				<%
 					out.print(ret.getString(6));
 				%>
 			</td>
-			<td>
+			<td style="text-align: center;">
 				<%
 					out.print(ret.getString(7));
+				%>
+			</td>
+			<td style="text-align: center;">
+				<%
+					out.print(ret.getString(10));
 				%>
 			</td>
 			<%

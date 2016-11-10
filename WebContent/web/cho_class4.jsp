@@ -14,7 +14,7 @@
 		<form action="cla_select1.jsp">
 			<center>
 
-				<br>
+				<br><br>
 				 选择日期： <input type="text" class="Wdate"
 				onfocus="WdatePicker({lang:'zh-cn'})" name="date1"/>
 				 
@@ -46,13 +46,13 @@
 				%>
 				<br> <br> 选择班级：
 				<%
- 	String sql = null;
- 	HelperDB db = null;
- 	ResultSet ret = null;
- 	sql = "select classname from class_db";
- 	db = new HelperDB(sql);
- 	ret = db.pst.executeQuery();
- %>
+				 	String sql = null;
+				 	HelperDB db = null;
+				 	ResultSet ret = null;
+				 	sql = "select classname from class_db";
+				 	db = new HelperDB(sql);
+				 	ret = db.pst.executeQuery();
+				 %>
 				<select style="width: 250px; margin-top: 50px;" name="class1">
 					<%
 						while (ret.next()) {

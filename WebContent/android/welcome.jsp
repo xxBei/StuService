@@ -88,8 +88,6 @@
 		time2 = ret2.getDate(1);
 		time3 = ret2.getString(1);
 	}
-	System.out.println("数据库时间:"+time2);
-	System.out.println("数据库时间---:"+time3);
 	db2.close();
 	ret2.close();
 	

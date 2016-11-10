@@ -6,9 +6,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 </head>
+
 <body>
-	<center><div><a href="Cho_class.jsp" target="right"><font size="5px">选择教室</font></a></div></center>
-	<center><div><a href="cho_class4.jsp" target="right"><font size="5px">查看记录</font></a></div></center>
-	<center><div><a href="select.jsp" target="right"><font size="5px">查看学生信息</font></a></div></center>
+	<br><br>
+	<center><div><a href="Cho_class.jsp" target="right"><font size="5px"><img src="../imagse/chios_classname.png"></font></a></div></center>
+	<br><br>
+	<center><div><a href="cho_class4.jsp" target="right"><font size="5px"><img src="../imagse/select_info.png"></font></a></div></center>
+	<br><br>
+	<center><div><a href="select.jsp" target="right"><font size="5px"><img src="../imagse/select_jilu.png"></font></a></div></center>
 </body>
 </html>

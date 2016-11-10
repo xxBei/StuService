@@ -15,6 +15,7 @@
 	String classname = request.getParameter("classname");
 	String roomName = request.getParameter("roomName");
 	String ke = request.getParameter("ke");
+	String state = request.getParameter("state");
 
 	ke = "第" + ke + "节课";
 	System.out.println("此次为：" + ke);
@@ -103,7 +104,7 @@
 		if (user == null) {
 			System.out.print("用户名为空");
 		} else {
-			sql = "insert into statisttics_db (name,number,classname,images,section,time,days,roomName) values('"
+			sql = "insert into statisttics_db (name,number,classname,images,section,time,days,roomName,state) values('"
 					+ name
 					+ "','"
 					+ user
@@ -118,7 +119,9 @@
 					+ "','"
 					+ days
 					+"','"
-					+ roomName + "')";
+					+ roomName
+					+"','"
+					+state+ "')";
 			HelperDB db = new HelperDB(sql);
 			boolean ret = db.pst.execute();
 			db.close();
